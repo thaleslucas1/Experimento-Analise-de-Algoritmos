@@ -112,17 +112,6 @@ def measure_algorithm(
 def build_datasets(n: int) -> list[list[float]]:
     """
     Generate all datasets for a benchmark size.
-
-    Parameters
-    ----------
-    n : int
-        Dataset size.
-
-    Returns
-    -------
-    list[list[float]]
-        List containing REPETITIONS datasets generated with
-        seeds 0..REPETITIONS-1.
     """
     return [
         generate_salaries(n, seed=seed)
@@ -133,11 +122,6 @@ def build_datasets(n: int) -> list[list[float]]:
 def save_results(rows: list[dict]) -> None:
     """
     Save benchmark results to CSV.
-
-    Parameters
-    ----------
-    rows : list[dict]
-        Benchmark result records.
     """
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 

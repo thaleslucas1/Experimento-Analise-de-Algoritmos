@@ -15,23 +15,7 @@ from typing import Sequence
 
 
 def _partition(arr: list[float], left: int, right: int) -> int:
-    """
-    Partition the array around a randomly chosen pivot.
 
-    Parameters
-    ----------
-    arr : list[float]
-        Working array.
-    left : int
-        Left boundary.
-    right : int
-        Right boundary.
-
-    Returns
-    -------
-    int
-        Final pivot position.
-    """
     pivot_index = random.randint(left, right)
 
     arr[pivot_index], arr[right] = arr[right], arr[pivot_index]
@@ -50,21 +34,7 @@ def _partition(arr: list[float], left: int, right: int) -> int:
 
 
 def _quickselect(arr: list[float], k: int) -> float:
-    """
-    Find the k-th smallest element using QuickSelect.
 
-    Parameters
-    ----------
-    arr : list[float]
-        Working array.
-    k : int
-        Target index.
-
-    Returns
-    -------
-    float
-        k-th smallest value.
-    """
     left = 0
     right = len(arr) - 1
 
@@ -93,11 +63,6 @@ def median(values: Sequence[float]) -> float:
     -------
     float
         Median value.
-
-    Raises
-    ------
-    ValueError
-        If the input sequence is empty.
     """
     if not values:
         raise ValueError("Cannot compute median of an empty sequence.")

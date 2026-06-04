@@ -4,8 +4,6 @@ Synthetic salary data generator.
 This module centralizes the generation of salary datasets used in
 median benchmark experiments.
 
-The generated values represent synthetic salaries sampled from a
-uniform distribution within a realistic salary range.
 """
 
 from __future__ import annotations
@@ -50,11 +48,6 @@ def generate_salaries(
     list[float]
         List containing ``n`` salary values sampled uniformly
         between MIN_SALARY and MAX_SALARY.
-
-    Raises
-    ------
-    ValueError
-        If n is less than 1.
     """
     if n < 1:
         raise ValueError("n must be greater than zero.")
