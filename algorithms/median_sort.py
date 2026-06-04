@@ -2,7 +2,7 @@
 Median calculation using full sorting.
 
 This module implements median computation by sorting all elements
-and then selecting the middle value(s).
+with Merge Sort and then selecting the middle value(s).
 
 Expected complexity:
     Time: O(n log n)
@@ -10,6 +10,76 @@ Expected complexity:
 """
 
 from typing import Sequence
+
+
+def _merge(left: list[float], right: list[float]) -> list[float]:
+    """
+    Merge two sorted lists into a single sorted list.
+
+    Parameters
+    ----------
+    left : list[float]
+        First sorted list.
+    right : list[float]
+        Second sorted list.
+
+    Returns
+    -------
+    list[float]
+        Merged sorted list.
+
+    Complexity
+    ----------
+    Time: O(n)
+    Space: O(n)
+    """
+    merged: list[float] = []
+
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            merged.append(left[i])
+            i += 1
+        else:
+            merged.append(right[j])
+            j += 1
+
+    merged.extend(left[i:])
+    merged.extend(right[j:])
+
+    return merged
+
+
+def _merge_sort(values: list[float]) -> list[float]:
+    """
+    Sort a list using Merge Sort.
+
+    Parameters
+    ----------
+    values : list[float]
+        List to be sorted.
+
+    Returns
+    -------
+    list[float]
+        Sorted copy of the input list.
+
+    Complexity
+    ----------
+    Time: O(n log n)
+    Space: O(n)
+    """
+    if len(values) <= 1:
+        return values
+
+    middle = len(values) // 2
+
+    left = _merge_sort(values[:middle])
+    right = _merge_sort(values[middle:])
+
+    return _merge(left, right)
 
 
 def median(values: Sequence[float]) -> float:
@@ -30,11 +100,17 @@ def median(values: Sequence[float]) -> float:
     ------
     ValueError
         If the input sequence is empty.
+
+    Complexity
+    ----------
+    Time: O(n log n)
+    Space: O(n)
     """
     if not values:
         raise ValueError("Cannot compute median of an empty sequence.")
 
-    data = sorted(values)
+    data = _merge_sort(list(values))
+
     n = len(data)
     middle = n // 2
 
