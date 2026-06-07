@@ -97,7 +97,7 @@ Seleciona diretamente o elemento de ordem desejada sem ordenar o vetor completo.
 
 ## Metodologia
 
-- **Tamanhos de entrada:** 1.000, 5.000, 10.000, 50.000, 100.000, 500.000 e 1.000.000
+- **Tamanhos de entrada:** 100 tamanhos em escala logarítmica entre 1.000 e 1.000.000
 - **Repetições:** 30 por tamanho, com seeds de 0 a 29
 - **Medição:** `time.perf_counter()`
 - **Validação de corretude:** `math.isclose(rel_tol=1e-12, abs_tol=1e-12)` antes de qualquer medição
