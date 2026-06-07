@@ -24,11 +24,7 @@ REPETITIONS = 30
 # Correctness is independent of input size, so validating on every
 # benchmark size (especially 500k and 1M) would only increase startup
 # cost without providing meaningful additional confidence.
-VALIDATION_SIZES = (
-    1_000,
-    5_000,
-    10_000,
-)
+VALIDATION_SIZES = INPUT_SIZES[:3]
 
 OUTPUT_FILE = Path("reports") / "benchmark_results.csv"
 
