@@ -5,20 +5,18 @@ This module centralizes the generation of salary datasets used in
 median benchmark experiments.
 
 """
-
 from __future__ import annotations
+
+import numpy as np
 
 import random
 from typing import Final
 
-INPUT_SIZES: Final[tuple[int, ...]] = (
-    1_000,
-    5_000,
-    10_000,
-    50_000,
-    100_000,
-    500_000,
-    1_000_000,
+INPUT_SIZES: Final[tuple[int, ...]] = tuple(
+    dict.fromkeys(
+        int(n)
+        for n in np.logspace(3, 6, num=100)
+    )
 )
 
 MIN_SALARY: Final[float] = 1_000.0
